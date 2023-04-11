@@ -1,0 +1,40 @@
+<h1>Formulario</h1>
+
+<form (ngSubmit)="onRegister()" #myForm="ngForm">
+  <div class="input-group">
+    <div>
+      <label for="">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        [(ngModel)]="register.name"
+      />
+      <p>Mensaje de error</p>
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input
+        type="text"
+        required
+        id="email"
+        name="email"
+        [(ngModel)]="register.email"
+      />
+      <p>Mensaje de error</p>
+    </div>
+    <div>
+      <label for="">Password</label>
+      <input
+        type="text"
+        required
+        id="password"
+        name="password"
+        [(ngModel)]="register.password"
+      />
+      <p>Mensaje de error</p>
+    </div>
+  </div>
+  <button type="submit" [disabled]="myForm.invalid">Registrar</button>
+</form>

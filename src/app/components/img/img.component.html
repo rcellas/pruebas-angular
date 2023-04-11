@@ -1,0 +1,15 @@
+<img
+  [src]="img"
+  alt=""
+  (load)="imgLoaded()"
+  (error)="imgError()"
+  *ngIf="img; else elseImg"
+/>
+<ng-template #elseImg>
+  <img
+    src="https://www.shutterstock.com/image-vector/default-image-icon-vector-missing-260nw-2086941550.jpg"
+    alt=""
+  />
+</ng-template>
+
+<h3>{{ counter }}</h3>
