@@ -6,24 +6,22 @@ import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './components/products/products.component';
-import { FormLoginComponent } from './components/form-login/form-login.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductItemsComponent } from './components/product-items/product-items.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ReversePipe } from './pipes/reverse.pipe';
-import { TimeAgoPipe } from './pipes/timeAgo/timeAgo.pipe';
-import { HightlightDirective } from './directives/hightlight/hightlight.directive';
-import { TimeInitPipe } from './pipes/timeInit/time-init.pipe';
-import { CarruselComponent } from './components/carrusel/carrusel.component';
+
+import { FormLoginComponent } from './ui/form-login/form-login.component';
+import { ImgComponent } from './ui/img/img.component';
+
+import { HeaderComponent } from './ui/header/header.component';
+import { ReversePipe } from './global/pipes/reverse.pipe';
+import { TimeAgoPipe } from './global/pipes/timeAgo/timeAgo.pipe';
+import { HightlightDirective } from './global/directives/hightlight/hightlight.directive';
+import { TimeInitPipe } from './global/pipes/timeInit/time-init.pipe';
+import { CarruselComponent } from './ui/carrusel/carrusel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
     FormLoginComponent,
     ImgComponent,
-    ProductItemsComponent,
     HeaderComponent,
     ReversePipe,
     TimeAgoPipe,
