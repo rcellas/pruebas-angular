@@ -1,0 +1,21 @@
+<button (click)="createNewProduct()">Tester</button>
+
+<div class="products--grid">
+
+  <app-list-item
+      [products]="product"
+      (addedProduct)="onAddShoppingCart($event)"
+      (showProduct)="onShowDetail($event)">
+  </app-list-item>
+  <button (click)="loadMore()">Ver más</button>
+</div>
+<!-- Falta implementar los output en item -->
+<app-detail
+    [class.active]="showProductDetail"
+    [productChosen]="productChosen"
+    (toggleProductDetail)="onToggleProductDetail($event)"
+    (updateProduct)="onUpdate($event)"
+    (deleteProduct)="onDelete($event)"
+    >
+</app-detail>
+

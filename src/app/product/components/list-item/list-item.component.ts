@@ -1,18 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../models/Products';
+import { Product } from '../../interfaces/product';
 
 @Component({
-  selector: 'app-product-items',
-  templateUrl: './product-items.component.html',
-  styleUrls: ['./product-items.component.scss']
+  selector: 'app-list-item',
+  templateUrl: './list-item.component.html',
+  styleUrls: ['./list-item.component.scss']
 })
-export class ProductItemsComponent {
+export class ProductListItemComponent {
   @Input() product: Product = {
     id: '',
     title: '',
     price: 0,
     images: [],
-    description:'',
+    description: '',
     category: {
       id: '',
       name: ''
@@ -21,10 +21,10 @@ export class ProductItemsComponent {
   @Output() addedProduct = new EventEmitter<Product>()
   @Output() showProduct = new EventEmitter<string>()
 
-  addCart(){
+  addCart() {
     this.addedProduct.emit(this.product)
   }
-  onShowDetail(){
+  onShowDetail() {
     this.showProduct.emit(this.product.id)
   }
 }

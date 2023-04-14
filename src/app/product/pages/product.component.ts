@@ -1,16 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Product, CreateProductDTO } from '../../models/Products';
-import { ProductService } from '../../service/product.service';
+import { Product, CreateProductDTO } from '../interfaces';
+import { ProductService } from '../services/product.service';
 
-import { StoreService } from 'src/app/service/store.service';
+import { StoreService } from 'src/app/product/services/store.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-product',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductComponent implements OnInit {
   widthImg = 10;
   myShoppingCart: Product[] = [];
   total = 0;
@@ -28,8 +28,8 @@ export class ProductsComponent implements OnInit {
     description: '',
   };
 
-  limit=10
-  offset=0
+  limit = 10
+  offset = 0
 
   constructor(
     private storeService: StoreService,
@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProductByPage(10,0).subscribe((data) => {
+    this.productService.getProductByPage(10, 0).subscribe((data) => {
       this.products = data;
       this.offset += this.limit
     });
@@ -88,19 +88,19 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  deleteProduct(){
+  deleteProduct() {
     const id = this.productChosen.id
-    this.productService.delete(id).subscribe(()=>{
+    this.productService.delete(id).subscribe(() => {
       const productIndex = this.products.findIndex(
         (item) => item.id === this.productChosen.id
       );
-      this.products.splice(productIndex,1)
+      this.products.splice(productIndex, 1)
       this.showProductDetail = false;
     })
   }
 
-  loadMore(){
-    this.productService.getProductByPage(this.limit,this.offset).subscribe((data) => {
+  loadMore() {
+    this.productService.getProductByPage(this.limit, this.offset).subscribe((data) => {
       this.products = this.products.concat(data);
       this.offset += this.limit
     });
