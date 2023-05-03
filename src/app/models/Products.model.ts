@@ -10,6 +10,7 @@ export interface Product {
   images: string[];
   description: string;
   category: Category;
+  taxes?:number
 }
 
 // Omit (ts) lo que hace es obmitir los valores que nosotro no necesitamos para este apartado

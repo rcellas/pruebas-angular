@@ -1,4 +1,10 @@
 <app-header></app-header>
+<button (click)="createUser()">Create</button>
+<button (click)="downloadPDF()">Descargar</button>
+<div>
+  <input type="file" (change)="onUpload($event)">
+  <img *ngIf="imgRta" [src]="imgRta" alt="">
+</div>
 <app-products></app-products>
 <input type="text" [(ngModel)]="imgParent" />
 <button (click)="toggleImg()">Toggle Img</button>

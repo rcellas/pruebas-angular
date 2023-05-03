@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Product, CreateProductDTO } from '../../models/Products';
+import { Product, CreateProductDTO } from '../../models/Products.model';
 import { ProductService } from '../../service/product.service';
 
 import { StoreService } from 'src/app/service/store.service';
+import { switchMap, zip } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -28,8 +29,9 @@ export class ProductsComponent implements OnInit {
     description: '',
   };
 
-  limit=10
-  offset=0
+  limit = 10;
+  offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -39,9 +41,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProductByPage(10,0).subscribe((data) => {
+    this.productService.getAllProduct(10, 0).subscribe((data) => {
       this.products = data;
-      this.offset += this.limit
+      this.offset += this.limit;
     });
   }
 
@@ -55,10 +57,38 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
-    this.productService.getProduct(id).subscribe((data) => {
-      this.toggleProductDetail();
-      this.productChosen = data;
-    });
+    this.statusDetail = 'loading';
+    this.productService.getProduct(id).subscribe(
+      (data) => {
+        this.toggleProductDetail();
+        this.productChosen = data;
+        this.statusDetail = 'success';
+      },
+      (error) => {
+        console.error(error);
+        this.statusDetail = 'error';
+      }
+    );
+  }
+
+  // esto es para unir diferentes request
+  readAndUpdate(id: string) {
+    this.productService
+      .getProduct(id)
+      .pipe(
+        switchMap((product) => {
+          return this.productService.update(product.id, { title: 'change' });
+        })
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
+      this.productService.fetchReadAndUpdate(id,{title:'change'})
+      // .subscribe((response) => {
+      //   const read = response[0];
+      //   const update = response[1];
+      // });
+
   }
 
   createNewProduct() {
@@ -88,21 +118,23 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  deleteProduct(){
-    const id = this.productChosen.id
-    this.productService.delete(id).subscribe(()=>{
+  deleteProduct() {
+    const id = this.productChosen.id;
+    this.productService.delete(id).subscribe(() => {
       const productIndex = this.products.findIndex(
         (item) => item.id === this.productChosen.id
       );
-      this.products.splice(productIndex,1)
+      this.products.splice(productIndex, 1);
       this.showProductDetail = false;
-    })
+    });
   }
 
-  loadMore(){
-    this.productService.getProductByPage(this.limit,this.offset).subscribe((data) => {
-      this.products = this.products.concat(data);
-      this.offset += this.limit
-    });
+  loadMore() {
+    this.productService
+      .getProductByPage(this.limit, this.offset)
+      .subscribe((data) => {
+        this.products = this.products.concat(data);
+        this.offset += this.limit;
+      });
   }
 }

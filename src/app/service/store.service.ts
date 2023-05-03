@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 // haga un cambio responderá al instante
 import {BehaviorSubject} from 'rxjs'
 
-import { Product } from '../models/Products';
+import { Product } from '../models/Products.model';
 
 @Injectable({
   providedIn: 'root'
