@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Product, CreateProductDTO } from '../../models/Products.model';
 import { ProductService } from '../../service/product.service';
@@ -11,11 +11,11 @@ import { switchMap, zip } from 'rxjs';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent{
   widthImg = 10;
   myShoppingCart: Product[] = [];
   total = 0;
-  products: Product[] = [];
+  @Input() products: Product[] = [];
   showProductDetail = false;
   productChosen: Product = {
     id: '',
@@ -28,7 +28,6 @@ export class ProductsComponent implements OnInit {
     },
     description: '',
   };
-
   limit = 10;
   offset = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
@@ -38,13 +37,6 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService
   ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
-  }
-
-  ngOnInit(): void {
-    this.productService.getAllProduct(10, 0).subscribe((data) => {
-      this.products = data;
-      this.offset += this.limit;
-    });
   }
 
   onAddShoppingCart(product: Product) {

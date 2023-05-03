@@ -1,14 +1,16 @@
 <app-header></app-header>
-<button (click)="createUser()">Create</button>
+<!-- esto nos va a permitir poner las rutas -->
+<router-outlet></router-outlet>
+<!-- <button (click)="createUser()">Create</button>
 <button (click)="downloadPDF()">Descargar</button>
 <div>
   <input type="file" (change)="onUpload($event)">
   <img *ngIf="imgRta" [src]="imgRta" alt="">
-</div>
-<app-products></app-products>
-<input type="text" [(ngModel)]="imgParent" />
+</div> -->
+<!-- <app-products></app-products> -->
+<!-- <input type="text" [(ngModel)]="imgParent" />
 <button (click)="toggleImg()">Toggle Img</button>
-<p>{{ showImg }}</p>
+<p>{{ showImg }}</p> -->
 <!-- <app-img
   [changeImg]="imgParent"
   (loaded)="onLoaded($event)"
