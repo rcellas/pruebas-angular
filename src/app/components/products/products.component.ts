@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Product, CreateProductDTO } from '../../models/Products.model';
 import { ProductService } from '../../service/product.service';
@@ -12,10 +12,11 @@ import { switchMap, zip } from 'rxjs';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent{
+  @Input() products: Product[] = [];
+  @Output() loadMore = new EventEmitter;
   widthImg = 10;
   myShoppingCart: Product[] = [];
   total = 0;
-  @Input() products: Product[] = [];
   showProductDetail = false;
   productChosen: Product = {
     id: '',
@@ -121,12 +122,7 @@ export class ProductsComponent{
     });
   }
 
-  loadMore() {
-    this.productService
-      .getProductByPage(this.limit, this.offset)
-      .subscribe((data) => {
-        this.products = this.products.concat(data);
-        this.offset += this.limit;
-      });
+  onLoadMore() {
+    this.loadMore.emit()
   }
 }

@@ -3,7 +3,7 @@
 <div class="products--grid">
   <app-product-items [product]="product" *ngFor="let product of products" (addedProduct)="onAddShoppingCart($event)"
     (showProduct)="onShowDetail($event)"></app-product-items>
-    <button (click)="loadMore()">Ver más</button>
+    <button (click)="onLoadMore()">Ver más</button>
 </div>
 
 <div class="product-detail" [class.active]="showProductDetail">
