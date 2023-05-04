@@ -6,7 +6,7 @@ import { StoreService } from '../../service/store.service';
 
 import { User } from 'src/app/models/user.model';
 import { CategoriesService } from 'src/app/service/categories.service';
-import { Category } from 'src/app/models/categories.model';
+import { Category } from 'src/app/models/Categories.model';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

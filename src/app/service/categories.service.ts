@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Category } from '../models/categories.model';
+import { Category } from '../models/Categories.model';
 import { environment } from './../../environments/environment';
 
 @Injectable({

@@ -1,9 +1,12 @@
-<div>
-  <app-img *ngIf="product.images.length > 0" [img]="product.images[0]" alt=""></app-img>
-  <h2>{{product.title}}</h2>
+
+  <a [routerLink]="['/product',product.id]">
+    <app-img *ngIf="product.images.length > 0" [img]="product.images[0]" alt=""></app-img>
+  </a>
+
+  <h2 class="title">{{product.title}}</h2>
   <h3>{{product.price | currency:'EUR'}}</h3>
   <h3>Taxas: {{product.taxes}}</h3>
-  <p>{{product.category.name}}</p>
+  <p class="category">{{product.category.name}}</p>
   <button (click)="onShowDetail()">Ver detalle</button>
   <button (click)="addCart()">Agregar a carrito</button>
-</div>
+
