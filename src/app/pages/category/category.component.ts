@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
   categoryId: string | null = null;
   limit = 10;
   offset = 0;
+  productId: string | null=null
 
   constructor(
     private route: ActivatedRoute,
@@ -47,5 +48,9 @@ export class CategoryComponent implements OnInit {
         //     });
         // }
       });
+
+      this.route.queryParamMap.subscribe(params=>{
+        this.productId = params.get('product')
+      })
   }
 }
