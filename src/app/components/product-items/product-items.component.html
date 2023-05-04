@@ -3,7 +3,7 @@
   <h2>{{product.title}}</h2>
   <h3>{{product.price | currency:'EUR'}}</h3>
   <h3>Taxas: {{product.taxes}}</h3>
-  <p>{{product.category?.name}}</p>
+  <p>{{product.category.name}}</p>
   <button (click)="onShowDetail()">Ver detalle</button>
   <button (click)="addCart()">Agregar a carrito</button>
 </div>
