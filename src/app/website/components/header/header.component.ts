@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from 'src/app/service/auth.service';
 import { UsersService } from 'src/app/service/users.service';
-import { StoreService } from '../../service/store.service';
+import { StoreService } from '../../../service/store.service';
 
 import { User } from 'src/app/models/user.model';
 import { CategoriesService } from 'src/app/service/categories.service';

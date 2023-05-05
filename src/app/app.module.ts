@@ -10,27 +10,28 @@ import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './components/products/products.component';
-import { FormLoginComponent } from './components/form-login/form-login.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductItemsComponent } from './components/product-items/product-items.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ReversePipe } from './pipes/reverse.pipe';
-import { TimeAgoPipe } from './pipes/timeAgo/timeAgo.pipe';
-import { HightlightDirective } from './directives/hightlight/hightlight.directive';
-import { TimeInitPipe } from './pipes/timeInit/time-init.pipe';
-import { CarruselComponent } from './components/carrusel/carrusel.component';
+import { ProductsComponent } from './website/components/products/products.component';
+import { FormLoginComponent } from './website/components/form-login/form-login.component';
+import { ImgComponent } from './website/components/img/img.component';
+import { ProductItemsComponent } from './website/components/product-items/product-items.component';
+import { HeaderComponent } from './website/components/header/header.component';
+import { ReversePipe } from './website/pipes/reverse.pipe';
+import { TimeAgoPipe } from './website/pipes/timeAgo/timeAgo.pipe';
+import { HightlightDirective } from './website/directives/hightlight/hightlight.directive';
+import { TimeInitPipe } from './website/pipes/timeInit/time-init.pipe';
+import { CarruselComponent } from './website/components/carrusel/carrusel.component';
 import { TimeInterceptor } from './interceptor/time.interceptor';
 import { TokenInterceptor } from './interceptor/token.interceptor';
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { MyCartComponent } from './pages/my-cart/my-cart.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { HomeComponent } from './website/pages/home/home.component';
+import { NotFoundComponent } from './website/pages/not-found/not-found.component';
+import { CategoryComponent } from './website/pages/category/category.component';
+import { MyCartComponent } from './website/pages/my-cart/my-cart.component';
+import { LoginComponent } from './website/pages/login/login.component';
+import { RegisterComponent } from './website/pages/register/register.component';
+import { RecoveryComponent } from './website/pages/recovery/recovery.component';
+import { ProfileComponent } from './website/pages/profile/profile.component';
+import { ProductDetailComponent } from './website/pages/product-detail/product-detail.component';
+import { LayoutComponent } from './website/components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
     RecoveryComponent,
     ProfileComponent,
     ProductDetailComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
