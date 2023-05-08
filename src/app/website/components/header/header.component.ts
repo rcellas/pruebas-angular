@@ -4,15 +4,17 @@ import { AuthService } from 'src/app/service/auth.service';
 import { UsersService } from 'src/app/service/users.service';
 import { StoreService } from '../../../service/store.service';
 
-import { User } from 'src/app/models/user.model';
+import { User } from '../../../models/User.model';
 import { CategoriesService } from 'src/app/service/categories.service';
 import { Category } from 'src/app/models/Categories.model';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
   showMenu = false;
   counter = 0;
   profile: User | null = null;
@@ -21,22 +23,32 @@ export class HeaderComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private AuthService: AuthService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ) {}
-  ngOnInit() {
+
+  ngOnInit(): void{
     this.storeService.myCart$.subscribe((products) => {
       this.counter = products.length;
     });
     this.getAllCategory();
+    this.AuthService.user$.subscribe(data=>{this.profile =data})
   }
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
 
   login() {
-    this.AuthService.loginAndGet('sebas@mail.com', '1212').subscribe((user) => {
-      this.profile = user;
+    this.AuthService.loginAndGet('john@mail.com', 'changeme').subscribe(() => {
+      this.router.navigate(['/profile'])
     });
+  }
+
+  logout(){
+    this.AuthService.logout()
+    this.profile = null
+    this.router.navigate(['/'])
+
   }
 
   getAllCategory() {

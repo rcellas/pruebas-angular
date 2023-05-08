@@ -11,7 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 
 import { HomeComponent } from './pages/home/home.component';
-import { CategoryComponent } from './pages/category/category.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -19,6 +18,8 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CategoryModule } from './pages/category/category.module';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,6 @@ import { LayoutComponent } from './components/layout/layout.component';
     HeaderComponent,
     CarruselComponent,
     HomeComponent,
-    CategoryComponent,
     MyCartComponent,
     LoginComponent,
     RegisterComponent,
@@ -41,6 +41,8 @@ import { LayoutComponent } from './components/layout/layout.component';
     FormsModule,
     SwiperModule,
     SharedModule,
+    CategoryModule,
+    QuicklinkModule
   ],
 })
 export class WebsiteModule {}

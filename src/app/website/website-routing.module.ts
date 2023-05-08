@@ -11,57 +11,64 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
-    path:'',
-    component:LayoutComponent,
-    children:[
+    path: '',
+    component: LayoutComponent,
+    children: [
       // {
       //   path:'',
       //   redirectTo:'/home',
       //   pathMatch:'full'
       // },
       {
-        path:'',
-        component:HomeComponent
+        path: '',
+        component: HomeComponent,
       },
       {
-        path:'category/:id',
-        component:CategoryComponent
+        path: 'category',
+        loadChildren: () =>
+          import('./pages/category/category.module').then(
+            (m) => m.CategoryModule
+          ),
+        data: {
+          preload: true,
+        },
       },
       {
-        path:'product/:id',
-        component:ProductDetailComponent
+        path: 'product/:id',
+        component: ProductDetailComponent,
       },
       {
-        path:'login',
-        component:LoginComponent
+        path: 'login',
+        component: LoginComponent,
       },
       {
-        path:'my-cart',
-        component:MyCartComponent
+        path: 'my-cart',
+        component: MyCartComponent,
       },
       {
-        path:'register',
-        component:RegisterComponent
+        path: 'register',
+        component: RegisterComponent,
       },
       {
-        path:'recovery',
-        component:RecoveryComponent
+        path: 'recovery',
+        component: RecoveryComponent,
       },
       {
-        path:'profile',
-        component:ProfileComponent
+        path: 'profile',
+        // aquí es donde especificamos que guardian usa y cual es el que llamamos
+        canActivate: [AuthGuard],
+        component: ProfileComponent,
       },
-
-    ]
-
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class WebsiteRoutingModule { }
+export class WebsiteRoutingModule {}

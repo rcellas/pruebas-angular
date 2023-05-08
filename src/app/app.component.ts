@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './service/auth.service';
 import { FilesService } from './service/files.service';
+import { TokenService } from './service/token.service';
 
 import { UsersService } from './service/users.service';
 @Component({
@@ -7,15 +9,26 @@ import { UsersService } from './service/users.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   imgParent = '';
   showImg = true;
   token = '';
-  imgRta =''
+  imgRta = '';
+  
   constructor(
     private UserService: UsersService,
-    private fileService: FilesService
+    private fileService: FilesService,
+    private authService: AuthService,
+    private tokenService: TokenService
   ) {}
+
+  ngOnInit() {
+    const token = this.tokenService.getToken();
+    if (token) {
+      this.authService.getProfile().subscribe();
+    }
+  }
+
   onLoaded(img: string) {
     // console.log('imagen cargada desde el padre', img)
   }
@@ -28,6 +41,7 @@ export class AppComponent {
       name: 'Sebas',
       email: 'sebas@mail.com',
       password: '1212',
+      role: 'customer',
     }).subscribe((rta) => {
       console.log(rta);
     });
@@ -43,13 +57,13 @@ export class AppComponent {
       .subscribe();
   }
 
-  onUpload(event:Event){
-    const element = event.target as HTMLInputElement
-    const file = element.files?.item(0)
-    if(file){
-      this.fileService.uploadFile(file).subscribe(rta=>{
-        this.imgRta = rta.location
-      })
+  onUpload(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const file = element.files?.item(0);
+    if (file) {
+      this.fileService.uploadFile(file).subscribe((rta) => {
+        this.imgRta = rta.location;
+      });
     }
   }
 }

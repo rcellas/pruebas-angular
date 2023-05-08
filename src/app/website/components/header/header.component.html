@@ -11,7 +11,7 @@
     </a>
   </div>
   <div class="side-menu" [class.active]="showMenu">
-    <button (click)="toggleMenu()" >Close</button>
+    <button (click)="toggleMenu()">Close</button>
     <ul>
       <li><a routerLink="home">All</a></li>
       <li *ngFor="let item of categories">
@@ -27,9 +27,9 @@
         <img src="../../../assets/img/tanjiro_logo_h_blanco.png" alt="logo">
       </a>
       <ul>
-        <li ><a routerLinkActive="active" routerLink="home">All</a></li>
+        <li><a routerLinkActive="active" routerLink="/">All</a></li>
         <li *ngFor="let item of categories">
-          <a routerLinkActive="active"[routerLink]="['/category',item.id]">{{item.name}}</a>
+          <a routerLinkActive="active" [routerLink]="['/category',item.id]">{{item.name}}</a>
         </li>
       </ul>
     </nav>
@@ -37,7 +37,8 @@
       <div class="account">
         <button *ngIf="!profile; else elseBlock" (click)="login()">Login</button>
         <ng-template #elseBlock>
-          {{profile?.email}}
+          <a routerLink="/profile">{{ profile?.email }}</a>
+          <button (click)="logout()">Logout</button>
         </ng-template>
 
       </div>
