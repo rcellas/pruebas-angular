@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
-    this.AuthService.loginAndGet('john@mail.com', 'changeme').subscribe(() => {
+    this.AuthService.loginAndGet('admin@mail.com', 'admin123').subscribe(() => {
       this.router.navigate(['/profile'])
     });
   }
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.AuthService.logout()
     this.profile = null
-    this.router.navigate(['/'])
+    this.router.navigate(['/home'])
 
   }
 
