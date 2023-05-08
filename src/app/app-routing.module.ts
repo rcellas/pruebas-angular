@@ -19,7 +19,7 @@ const routes: Routes = [
   // esta ruta nos sirve para modularizar las rutas del cms (admin)
   {
     path: 'cms',
-    canActivate:[AdminGuard],
+    canActivate:[AdminGuard,AuthGuard],
     loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
   },
   {

@@ -7,21 +7,21 @@ import { LayoutComponent } from './component/layout/layout.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: LayoutComponent,
-    children:[
+    children: [
       {
-        path:'',
-        redirectTo:'grid',
-        pathMatch:'full'
+        path: '',
+        redirectTo: '/grid',
+        pathMatch: 'full'
       },
       {
-        path:'grid',
-        component:GridComponent
+        path: 'grid',
+        component: GridComponent
       },
       {
-        path:'tasks',
-        component:TasksComponent
+        path: 'tasks',
+        component: TasksComponent
       }
     ]
   }
