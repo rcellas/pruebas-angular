@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {
   HttpClientModule,
-  HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 

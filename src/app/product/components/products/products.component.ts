@@ -4,7 +4,8 @@ import { Product, CreateProductDTO } from '../../../models/Products.model';
 import { ProductService } from '../../service/product/product.service';
 
 import { StoreService } from '../../service/store/store.service';
-import { switchMap, zip } from 'rxjs';
+// import { switchMap, zip } from 'rxjs';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-products',

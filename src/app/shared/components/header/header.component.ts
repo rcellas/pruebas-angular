@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../../shared/service/auth/auth.service';
-import { UsersService } from '../../../shared/service/user/users.service';
 import { StoreService } from '../../../product/service/store/store.service';
 
 import { User } from '../../../models/User.model';
 import { CategoriesService } from '../../../product/service/categories/categories.service';
 import { Category } from 'src/app/models/Categories.model';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',

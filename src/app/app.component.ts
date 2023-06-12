@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onLoaded(img: string) {
-    // console.log('imagen cargada desde el padre', img)
-  }
+  // onLoaded(img: string) {
+  //   // console.log('imagen cargada desde el padre', img)
+  // }
   toggleImg() {
     this.showImg = !this.showImg;
   }

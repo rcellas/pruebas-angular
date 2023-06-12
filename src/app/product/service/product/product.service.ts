@@ -49,9 +49,9 @@ export class ProductService {
     return zip(
       this.getProduct(id),
       this.update(id, dto)
-    ) .subscribe((response) => {
-      const read = response[0];
-      const update = response[1];
+    ) .subscribe(() => {
+      // const read = response[0];
+      // const update = response[1];
     });
   }
   getAllProducts(){
