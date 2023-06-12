@@ -10,10 +10,10 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { TimeInterceptor } from './interceptor/time.interceptor';
-import { TokenInterceptor } from './interceptor/token.interceptor';
+import { TimeInterceptor } from './core/interceptor/time/time.interceptor';
+import { TokenInterceptor } from './core/interceptor/token/token.interceptor';
 
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({

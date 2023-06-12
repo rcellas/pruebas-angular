@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './service/auth.service';
-import { FilesService } from './service/files.service';
-import { TokenService } from './service/token.service';
+import { AuthService } from './shared/service/auth/auth.service';
+import { FilesService } from './shared/service/files/files.service';
+import { TokenService } from './shared/service/token/token.service';
 
-import { UsersService } from './service/users.service';
+import { UsersService } from './shared/service/user/users.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   showImg = true;
   token = '';
   imgRta = '';
-  
+
   constructor(
     private UserService: UsersService,
     private fileService: FilesService,

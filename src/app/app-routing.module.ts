@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { QuicklinkStrategy } from 'ngx-quicklink';
-import { AdminGuard } from './guards/admin.guard';
-import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './core/guards/admin/admin.guard';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 // import { CustomPreloadService } from './service/custom-preload.service';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./website/website.module').then((m) => m.WebsiteModule),
+      import('./product/website.module').then((m) => m.WebsiteModule),
     data: {
       preload: true,
     },
